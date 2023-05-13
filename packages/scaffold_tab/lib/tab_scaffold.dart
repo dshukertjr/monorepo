@@ -9,44 +9,42 @@ import 'package:flutter/material.dart';
 /// ScaffoldTab contains Scaffold as its child, so can also call Scaffold.of(context)
 class ScaffoldTab extends StatefulWidget {
   final int tabIndex;
-  final PreferredSizeWidget appBar;
-  final Drawer drawer;
-  final Widget bottomNavigationBar;
+  final PreferredSizeWidget? appBar;
+  final Drawer? drawer;
+  final Widget? bottomNavigationBar;
   final List<Widget> pages;
   final bool extendBody;
 
   const ScaffoldTab({
-    Key key,
-    @required this.tabIndex,
+    Key? key,
+    required this.tabIndex,
     this.appBar,
     this.drawer,
     this.bottomNavigationBar,
-    @required this.pages,
-    this.extendBody,
-  })  : assert(pages != null),
-        super(key: key);
+    required this.pages,
+    this.extendBody = false,
+  }) : super(key: key);
 
   @override
   _ScaffoldTabState createState() => _ScaffoldTabState();
 
-  static _InheritedScaffoldTab of(BuildContext context) {
+  static _InheritedScaffoldTab? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<_InheritedScaffoldTab>();
   }
 }
 
 class _ScaffoldTabState extends State<ScaffoldTab> {
-  List<Widget> _pages;
-  List<GlobalKey<NavigatorState>> _navigatorKeys;
+  late final List<Widget> _pages;
+  late final List<GlobalKey<NavigatorState>> _navigatorKeys;
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        _navigatorKeys[widget.tabIndex].currentState.maybePop();
+        _navigatorKeys[widget.tabIndex].currentState?.maybePop();
         return false;
       },
       child: _InheritedScaffoldTab(
-        appBar: widget.appBar,
         drawer: widget.drawer,
         bottomNavigationBar: widget.bottomNavigationBar,
         pages: _pages,
@@ -75,7 +73,7 @@ class _ScaffoldTabState extends State<ScaffoldTab> {
       initialRoute: 'home',
       onGenerateRoute: (routeSettings) {
         return MaterialPageRoute(
-            builder: (context) => routes[routeSettings.name](context));
+            builder: (context) => routes[routeSettings.name]!(context));
       },
     );
   }
@@ -83,22 +81,20 @@ class _ScaffoldTabState extends State<ScaffoldTab> {
 
 class _InheritedScaffoldTab extends InheritedWidget {
   _InheritedScaffoldTab({
-    @required AppBar appBar,
-    @required Drawer drawer,
-    @required Widget bottomNavigationBar,
-    @required List<Widget> pages,
-    @required int tabIndex,
-    bool extendBody,
+    required Drawer? drawer,
+    required Widget? bottomNavigationBar,
+    required List<Widget>? pages,
+    required int? tabIndex,
+    required bool extendBody,
   }) : super(
             child: Scaffold(
-          appBar: appBar,
           body: _ScaffoldTabChild(
             pages: pages,
             tabIndex: tabIndex,
           ),
           drawer: drawer,
           bottomNavigationBar: bottomNavigationBar,
-          extendBody: extendBody ?? false,
+          extendBody: extendBody,
         ));
 
   @override
@@ -108,20 +104,20 @@ class _InheritedScaffoldTab extends InheritedWidget {
 }
 
 class _ScaffoldTabChild extends StatelessWidget {
-  final List<Widget> pages;
-  final int tabIndex;
+  final List<Widget>? pages;
+  final int? tabIndex;
 
   _ScaffoldTabChild({
-    Key key,
-    @required this.pages,
-    @required this.tabIndex,
+    Key? key,
+    required this.pages,
+    required this.tabIndex,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return IndexedStack(
       index: tabIndex,
-      children: pages,
+      children: pages ?? [],
     );
   }
 }
