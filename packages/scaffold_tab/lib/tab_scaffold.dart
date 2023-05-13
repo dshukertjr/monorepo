@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 /// ScaffoldTab contains Scaffold as its child, so can also call Scaffold.of(context)
 class ScaffoldTab extends StatefulWidget {
   final int tabIndex;
-  final PreferredSizeWidget? appBar;
+  final AppBar? appBar;
   final Drawer? drawer;
   final Widget? bottomNavigationBar;
   final List<Widget> pages;
@@ -45,6 +45,7 @@ class _ScaffoldTabState extends State<ScaffoldTab> {
         return false;
       },
       child: _InheritedScaffoldTab(
+        appBar: widget.appBar,
         drawer: widget.drawer,
         bottomNavigationBar: widget.bottomNavigationBar,
         pages: _pages,
@@ -81,6 +82,7 @@ class _ScaffoldTabState extends State<ScaffoldTab> {
 
 class _InheritedScaffoldTab extends InheritedWidget {
   _InheritedScaffoldTab({
+    required AppBar? appBar,
     required Drawer? drawer,
     required Widget? bottomNavigationBar,
     required List<Widget>? pages,
