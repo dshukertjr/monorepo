@@ -1,3 +1,7 @@
+## 1.0.9
+
+ - Update a dependency to the latest release.
+
 ## 1.0.8
 
  - **FIX**: remove comment. ([9dba9e47](https://github.com/dshukertjr/monorepo/commit/9dba9e475746759da7e4990ebf88ddbf8b6052e7))
