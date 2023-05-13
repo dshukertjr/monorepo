@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`beautiful_loading_indicator` - `v1.0.8`](#beautiful_loading_indicator---v108)
+
+---
+
+#### `beautiful_loading_indicator` - `v1.0.8`
+
+ - **FIX**: remove comment. ([9dba9e47](https://github.com/dshukertjr/monorepo/commit/9dba9e475746759da7e4990ebf88ddbf8b6052e7))
+
+
+## 2023-05-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`tab_scaffold` - `v0.1.3`](#tab_scaffold---v013)
 
 ---
