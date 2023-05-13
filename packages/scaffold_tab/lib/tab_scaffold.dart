@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 /// Can open tab by calling ScaffoldTab.of(context).openTab(index)
 ///
 /// Can open previously opened tab by calling ScaffoldTab.of(context).openPreviousTab()
-///
-/// ScaffoldTab contains Scaffold as its child, so can also call Scaffold.of(context)
 class ScaffoldTab extends StatefulWidget {
   final int tabIndex;
   final AppBar? appBar;
