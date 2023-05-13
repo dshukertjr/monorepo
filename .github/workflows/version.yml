@@ -1,0 +1,56 @@
+name: Bumps the version and creates tags for packages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/**'
+
+jobs:
+  test:
+    name: Package release
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checks-out repo
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+
+      - name: Bootstrap workspace
+        run: |
+          dart pub global activate melos
+          melos bootstrap
+          melos run lint:all
+
+      - name: Link
+        run: melos run lint:all
+
+      - name: Setup Git config
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git config --global push.followTags true
+
+      - name: Bump version
+        run: melos version
+
+      - name: Bump version
+        run: melos version
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          # github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
