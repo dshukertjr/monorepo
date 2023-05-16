@@ -1,3 +1,7 @@
+## 0.1.4
+
+ - **FEAT**: updated version requirements ([#5](https://github.com/dshukertjr/monorepo/issues/5)). ([c2d66e9a](https://github.com/dshukertjr/monorepo/commit/c2d66e9a4e8054ba1b174a76955102159940bbc2))
+
 ## 0.1.3+1
 
  - **FIX**: remove comments. ([5491a82e](https://github.com/dshukertjr/monorepo/commit/5491a82ef44b565f31d3e53f5d7145c74e2a1db6))

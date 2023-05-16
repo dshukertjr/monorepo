@@ -1,3 +1,7 @@
+## 1.1.0
+
+ - **FEAT**: updated version requirements ([#5](https://github.com/dshukertjr/monorepo/issues/5)). ([c2d66e9a](https://github.com/dshukertjr/monorepo/commit/c2d66e9a4e8054ba1b174a76955102159940bbc2))
+
 ## 1.0.9
 
  - Update a dependency to the latest release.
