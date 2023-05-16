@@ -3,7 +3,7 @@ version: 1.0.9
 description: testing out automated release
 repository: https://github.com/dshukertjr/beautiful_loading_indicator
 environment:
-  sdk: '>=2.19.0 <3.0.0'
+  sdk: '>=2.19.0 <4.0.0'
 dependencies:
   tab_scaffold: ^0.1.3+1
 dev_dependencies:
