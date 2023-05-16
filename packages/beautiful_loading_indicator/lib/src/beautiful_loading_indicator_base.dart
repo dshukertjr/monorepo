@@ -1,4 +1,4 @@
 /// some comments
 class Awesome {
-  bool get isAwesome => false;
+  bool get isAwesome => true;
 }
